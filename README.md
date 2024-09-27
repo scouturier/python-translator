@@ -1,17 +1,15 @@
-# pptx-translator
+# python-translator
 
-Python script that translates pptx files using Amazon Translate service.
+Experimental python scripts that translates office files using Amazon Bedrock service
 
 ## Installation
 
-```
-$ virtualenv venv
-$ source venv/bin/activate
+```bash
 $ pip install -r requirements.txt
 ```
 
-## Usage
-```
+## pptx translate
+```bash
 $ python pptx-translator.py --help
 usage: Translates pptx files from source language to target language using Amazon Translate service
        [-h] [--terminology TERMINOLOGY]
@@ -30,10 +28,21 @@ optional arguments:
                         The path of the terminology CSV file
 ```
 
-## Security
+## xlsx translate
+```bash
+python xls-translator.py --help
+usage: Translates Excel files from source language to target language using Amazon Translate service
+       [-h] [--terminology TERMINOLOGY] --region REGION
+       source_language_code target_language_code input_file_path
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+positional arguments:
+  source_language_code  Source language code (e.g., en)
+  target_language_code  Target language code (e.g., es)
+  input_file_path       Path to the input Excel file
 
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
+optional arguments:
+  -h, --help            show this help message and exit
+  --terminology TERMINOLOGY
+                        Path to the terminology CSV file
+  --region REGION       AWS region (e.g., us-west-2)
+```
