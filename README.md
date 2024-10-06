@@ -14,7 +14,6 @@ This Python script uses Amazon Bedrock with Claude 3.5 to translate Excel (.xlsx
 1. Clone this repository or download the script files:
    ```
    git clone https://github.com/scouturier/python-translator.git
-   # or download manually
    ```
 
 2. Install the required Python packages:
