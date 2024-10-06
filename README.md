@@ -46,11 +46,11 @@ python office-translator.py [source_language_code] [target_language_code] [input
 
 Examples:
 ```
-# Translate Excel file from English to Spanish
-python office-translator.py en es document.xlsx
+# Translate Excel file from English to French
+python office-translator.py en fr document.xlsx
 
-# Translate PowerPoint file from French to German
-python office-translator.py fr de presentation.pptx
+# Translate PowerPoint file from French to Spanish
+python office-translator.py fr es presentation.pptx
 ```
 
 ### Parameters:
