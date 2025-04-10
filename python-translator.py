@@ -38,7 +38,7 @@ Text to translate: {text}"""
         
         response = bedrock_client.invoke_model(
             body=json.dumps(body),
-            modelId="anthropic.claude-3-sonnet-20240229-v1:0",
+            modelId="anthropic.claude-3-haiku-20240307-v1:0",
             contentType="application/json"
         )
         
@@ -164,7 +164,7 @@ def translate_document(input_path, source_language_code, target_language_code, b
 
 def main():
     argument_parser = argparse.ArgumentParser(
-        description='Translates Excel and PowerPoint files using Amazon Bedrock with Claude 3.5'
+        description='Translates Excel and PowerPoint files using Amazon Bedrock with Claude 3.7'
     )
     argument_parser.add_argument('source_language_code', type=str, help='Source language code (e.g., en)')
     argument_parser.add_argument('target_language_code', type=str, help='Target language code (e.g., es)')

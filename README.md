@@ -1,99 +1,140 @@
 # Office Document Translator
 
-This Python script uses Amazon Bedrock with Claude 3.5 to translate Excel (.xlsx) and PowerPoint (.pptx) files while preserving their formatting.
+A simple yet powerful tool that uses Amazon Bedrock with Claude 3.7 to translate Excel and PowerPoint files while preserving all formatting.
 
-## Prerequisites
+![Translator Banner](https://via.placeholder.com/800x200?text=Office+Document+Translator)
 
-- Python 3.7 or higher
-- pip (Python package installer)
-- AWS account with access to Amazon Bedrock
-- AWS credentials configured on your system
+## 📋 What It Does
 
-## Installation
+This tool translates:
+- Excel spreadsheets (.xlsx)
+- PowerPoint presentations (.pptx)
 
-1. Clone this repository or download the script files:
-   ```
+While maintaining all original formatting including fonts, colors, borders, and layout.
+
+## 🚀 Quick Start
+
+```bash
+# Translate an Excel file from English to French
+python office-translator.py en fr document.xlsx
+
+# Translate a PowerPoint from Spanish to German
+python office-translator.py es de presentation.pptx
+```
+
+## 📦 Installation
+
+1. Clone the repository:
+   ```bash
    git clone https://github.com/scouturier/python-translator.git
+   cd python-translator
    ```
 
-2. Install the required Python packages:
+2. Set up a Python virtual environment (recommended, especially on macOS):
+   ```bash
+   # Create a virtual environment
+   python3 -m venv venv
+   
+   # Activate the virtual environment
+   # On macOS/Linux:
+   source venv/bin/activate
+   
+   # On Windows:
+   # venv\Scripts\activate
+   
+   # Your terminal prompt should now show (venv) indicating the environment is active
    ```
+
+3. Install dependencies:
+   ```bash
    pip install -r requirements.txt
    ```
 
-## AWS Configuration
-
-1. Ensure you have AWS credentials configured with access to Amazon Bedrock. You can set this up by:
-   - Using AWS CLI: `aws configure`
-   - Or setting environment variables:
-     ```
-     export AWS_ACCESS_KEY_ID=your_access_key
-     export AWS_SECRET_ACCESS_KEY=your_secret_key
-     ```
-
-2. Set the AWS region environment variable:
-   ```
-   export AWS_REGION=your_region  # e.g., us-east-1
+4. When you're done using the translator, you can deactivate the virtual environment:
+   ```bash
+   deactivate
    ```
 
-## Usage
+## ⚙️ AWS Setup
 
-The script can translate both Excel and PowerPoint files:
+Before using the translator, you need:
 
-```
-python office-translator.py [source_language_code] [target_language_code] [input_file_path]
-```
+1. An AWS account with Amazon Bedrock access
+2. AWS credentials configured on your system
 
-Examples:
-```
-# Translate Excel file from English to French
-python office-translator.py en fr document.xlsx
+Set up your AWS environment:
 
-# Translate PowerPoint file from French to Spanish
-python office-translator.py fr es presentation.pptx
+```bash
+# Option 1: Using AWS CLI
+aws configure
+
+# Option 2: Using environment variables
+export AWS_ACCESS_KEY_ID=your_access_key
+export AWS_SECRET_ACCESS_KEY=your_secret_key
+export AWS_REGION=your_region  # e.g., us-east-1
 ```
 
-### Parameters:
-- `source_language_code`: The language code of the source document (e.g., en, fr, de)
-- `target_language_code`: The language code of the desired translation (e.g., es, it, ja)
-- `input_file_path`: Path to the Excel (.xlsx) or PowerPoint (.pptx) file
+## 📝 Usage Details
 
-The translated file will be saved in the same directory as the input file, with the target language code appended to the filename.
+### Command Format
+```
+python office-translator.py [source_language] [target_language] [file_path]
+```
 
-## Features
+### Parameters
+- `source_language`: Language code of the source document (en, fr, de, es, etc.)
+- `target_language`: Language code for translation (en, fr, de, es, etc.)
+- `file_path`: Path to your Excel or PowerPoint file
 
-- Preserves formatting in Excel files:
-  - Font styles
-  - Cell alignment
-  - Cell colors
-  - Borders
+### Output
+The translated file is saved in the same directory with the target language code appended to the filename:
+- `document.xlsx` → `document_fr.xlsx`
+- `presentation.pptx` → `presentation_de.pptx`
 
-- Preserves formatting in PowerPoint files:
-  - Text in shapes
-  - Text in tables
-  - Text in grouped objects
+## ✨ Features
 
-## Common Issues
+### Excel Translation
+- Translates all cell content
+- Preserves:
+  - Font styles and formatting
+  - Cell alignment and orientation
+  - Background colors and patterns
+  - Borders and cell styles
+  - Formulas (cell references remain intact)
 
-1. **AWS Region not set**
-   ```
-   Error: AWS_REGION environment variable is not set
-   ```
-   Solution: Set the AWS_REGION environment variable as shown in the AWS Configuration section.
+### PowerPoint Translation
+- Translates text in:
+  - Regular slides
+  - Shapes and text boxes
+  - Tables and charts
+  - Notes and comments
+  - Grouped objects
+- Preserves:
+  - Slide layouts and designs
+  - Animations and transitions
+  - Speaker notes
+  - All visual elements
 
-2. **Missing dependencies**
-   ```
-   ModuleNotFoundError: No module named 'package_name'
-   ```
-   Solution: Ensure you've installed all requirements using `pip install -r requirements.txt`
+## ❓ Troubleshooting
 
-3. **AWS credentials not found**
-   ```
-   botocore.exceptions.NoCredentialsError: Unable to locate credentials
-   ```
-   Solution: Configure AWS credentials using AWS CLI or environment variables as shown in the AWS Configuration section.
+| Problem | Solution |
+|---------|----------|
+| `AWS_REGION environment variable is not set` | Run: `export AWS_REGION=your_region` |
+| `ModuleNotFoundError: No module named 'package_name'` | Run: `pip install -r requirements.txt` |
+| `botocore.exceptions.NoCredentialsError: Unable to locate credentials` | Configure AWS credentials with `aws configure` |
+| Translation taking too long | Large files may require more time. Consider breaking into smaller files. |
 
-## Limitations
+## ⚠️ Limitations
 
-- The script only supports .xlsx and .pptx files
+- Only supports .xlsx and .pptx formats (not .xls or .ppt)
 - Very large files may take significant time to process
+- Character limits apply based on Amazon Bedrock quotas
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgements
+
+- Uses Amazon Bedrock with Claude 3.7 for high-quality translations
+- Built with Python, openpyxl, and python-pptx libraries
