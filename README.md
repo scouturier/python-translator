@@ -16,10 +16,10 @@ While maintaining all original formatting including fonts, colors, borders, and 
 
 ```bash
 # Translate an Excel file from English to French
-python office-translator.py en fr document.xlsx
+python python-translator.py en fr document.xlsx
 
 # Translate a PowerPoint from Spanish to German
-python office-translator.py es de presentation.pptx
+python python-translator.py es de presentation.pptx
 ```
 
 ## 📦 Installation
@@ -78,7 +78,7 @@ export AWS_REGION=your_region  # e.g., us-east-1
 
 ### Command Format
 ```
-python office-translator.py [source_language] [target_language] [file_path]
+python python-translator.py [source_language] [target_language] [file_path]
 ```
 
 ### Parameters
