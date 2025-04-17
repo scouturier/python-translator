@@ -2,8 +2,6 @@
 
 A simple yet powerful tool that uses Amazon Bedrock with Claude 3.7 to translate Excel and PowerPoint files while preserving all formatting.
 
-![Translator Banner](https://via.placeholder.com/800x200?text=Office+Document+Translator)
-
 ## 📋 What It Does
 
 This tool translates:
